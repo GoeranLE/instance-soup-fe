@@ -1,0 +1,135 @@
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('yumyum.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Stylish&display=swap');
+/* font-family: 'Stylish', sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
+
+/* ********************* UNIVERSAL STYLES *********************  */
+.btn {
+  font-family: 'Stylish', sans-serif;
+  font-size: 1rem;
+}
+
+/* ********************* NAVBAR *********************  */
+.navContainer {
+  background-color: gray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  max-width: 5rem;
+}
+
+.text-center {
+  font-family: 'Stylish', sans-serif;
+}
+
+.home {
+  font-family: 'Montserrat', sans-serif;
+} 
+
+/* ********************* HEADING IN MAIN *********************  */
+.firstPart {
+  font-family: 'MyWebFont';
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #00b33f;
+}
+
+.secondPart {
+  font-family: 'MyWebFont';
+  font-size: 0.5em;
+  line-height: 1.5em;
+  color: #ffc800;
+}
+
+/* ********************* Jumbotron *********************  */
+
+#jumbo {
+  /* background-image: url("./images/jumbo_bg.png"); */
+  background-image: url("./images/ramen-wp.jpg");
+  background-size: cover;
+}
+
+.jumbo-row {
+  background-color: lightgray;
+  opacity: 90%;
+  border-radius: 8px;
+}
+
+.jumbo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lead {
+  margin-left: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#eLoveMessage {
+  max-width: 15rem;
+}
+
+#mrEMascot {
+  max-width: 15rem;
+}
+
+.jumbotron p {
+  color: #484848;
+}
+
+/* ********************* CARDS *********************  */
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+
+.card-text {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* ********************* CARDS *********************  */
+
+.notFoundContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.notFound {
+  border-radius: 3px;
+  background-color: blue;
+  opacity: 90%;
+  padding: 2em;
+}
+
+.notFoundText {
+  color: white;
+  font-size: 4em;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.hi {
+  width: 35%;
+  height: 21em;
+  margin-left: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
