@@ -4,7 +4,7 @@ import Jumbotron from "./Jumbotron";
 import { Link } from "react-router-dom"; 
 
 
-export default function Main({ formatted, level, topics, match, setData }) {
+export default function Main({ formatted, level, topic, topics, match, setData }) {
 
   const randomColor = () => {
     const colors = ["#FFC634", "#FF5020", "#2B8CC1", "#E67192", "#00B349", "#00C654", "#A3585A"]
@@ -25,12 +25,21 @@ export default function Main({ formatted, level, topics, match, setData }) {
       }
     }
 
+    const handleTopicSelection = (selectTopic) => {
+      setData(prevState => ({
+        ...prevState,
+        topicSecelcted: selectTopic
+      }))
+      console.log("You selected topic:", )
+  
+    }
+
   return (
     <>
     {!match.params.id && <Jumbotron/>}
     {/* CONDITIONAL RENDERING for main / detail page */}
     {match.params.id ? <Detail vid={vid} formatted={ formatted }/> :  <div className="container">
-      <select className="custom-select custom-select-lg mb-3" onChange={(e) => handleChange(e)}>
+      <select className="custom-select custom-select-lg mb-5" onChange={(e) => handleChange(e)}>
         <option selected>Select spiceyness of your project</option>
         <option value="easy">🌶 (easy)</option>
         <option value="medium">🌶 🌶 (medium)</option>
@@ -38,64 +47,46 @@ export default function Main({ formatted, level, topics, match, setData }) {
       </select>
 
       <div className="row">
-        <div className="col-sm-12">
-          {topics.map(el => <button className="btn" style={{backgroundColor: randomColor()}}>{el}</button>)}
+        <div className="col-sm-12 mb-5">
+          {topics.map(el => <button onClick={() => handleTopicSelection(el)} className="btn ml-1 mr-1" style={{backgroundColor: randomColor()}}>{el}</button>)}
         </div>
       </div>
 
   {/* nested conditional rendering spicyness: */}
-  {level? <div class="row mb-3 mt-3">{formatted.filter(el => el.level === level).map(el => {
-    return (
-      <div class="col-sm-3 mb-3">
-              <div className="card">
-                <img
-                  className="card-img-top"
-                  src={el.image_url}
-                  alt="Card cap"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{el.title}</h5>
-                  <p className="card-text">{el.abstract}</p>
-                  <Link to={`/projects/${el.id}`} className="btn btn-warning">
-                    see project
-                  </Link>
-
-                </div>
-              </div>
-            </div>
-    )
-  })}</div> : 
-
-      <div className="row mb-3 mt-3">
-        {formatted.map((el) => {
-          return (
-            <div className="col-sm-3 mb-3">
-              <div className="card">
-                <img
-                  className="card-img-top"
-                  src={el.image_url}
-                  alt="Card top"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{el.title}</h5>
-                  <p className="card-text">{el.abstract}</p>
-                  <Link to={`/projects/${el.id}`} className="btn btn-warning">
-                    see project
-                  </Link>
-
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+  <div class="row mb-3 mt-3">{formatted.filter(el => {
+    if (level) {
+      return el.level === level;
+    } else if (topic) {
+      return el.topic === topic;
+    } else {
+      return el
     }
+    }).map(el => {
+      return (
+        <div class="col-sm-3 mb-3">
+          <div className="card">
+            <img
+              className="card-img-top"
+              src={el.image_url}
+              alt="Card cap"
+            />
+            <div className="card-body">
+              <h5 className="card-title">{el.title}</h5>
+              <p className="card-text">{el.abstract}</p>
+              <div className="d-flex justify-content-center">
+                <Link to={`/projects/${el.id}`} className="btn btn-warning">
+                  see project
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )
+  })}</div> 
+  
 
     </div>}
     </>
   );
-  
-
-
-    
 }

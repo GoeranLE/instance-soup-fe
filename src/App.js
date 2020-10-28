@@ -11,6 +11,7 @@ function App() {
   const [data, setData] = useState({
     infos: [],
     levelSelected: "",
+    topicSelected: ""
   });
 
   const [newState, setNewState] = useState([]);
@@ -81,6 +82,7 @@ function App() {
             <Main
               formatted={formatted}
               level={data.levelSelected}
+              topic={data.topicSelected}
               topics={topics}
               setData={setData}
               {...props}
