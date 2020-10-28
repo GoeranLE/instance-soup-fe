@@ -39,26 +39,18 @@ function App() {
     .filter((el, i, arr) => arr.indexOf(el) === arr.lastIndexOf(el));
 
   useEffect(() => {
-    fetch("http://localhost:3001")
+    fetch("http://localhost:3003")
       .then((res) => res.json())
-      .then((data) => JSON.parse(data))
-      .then((data) =>
-        setData((prevState) => ({
-          ...prevState,
-          infos: [...data],
-        }))
-      )
-      .catch((error) => console.log(error.message));
-
-    // client
-    //   .getEntries()
-    //   .then((res) => {
-    //     setData((prevState) => ({
-    //       ...prevState,
-    //       infos: [...res.items],
-    //     }));
-    //   })
-    //   .catch((error) => console.log(error.message));
+      .then((data) => console.log(data));
+    // .then((res) => res.json())
+    // .then((data) => console.log(data))
+    // .then((data) =>
+    //   setData((prevState) => ({
+    //     ...prevState,
+    //     infos: [...data],
+    //   }))
+    // )
+    // .catch((error) => console.log(error.message));
   }, []);
 
   console.log("STATE", data);
