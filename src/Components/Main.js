@@ -2,7 +2,7 @@ import React from "react";
 import Detail from "./Detail.js";
 import Jumbotron from "./Jumbotron";
 import { Link } from "react-router-dom"; 
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
 
 export default function Main({ formatted, level, topics, match, setData }) {
 
@@ -10,10 +10,6 @@ export default function Main({ formatted, level, topics, match, setData }) {
     const colors = ["#FFC634", "#FF5020", "#2B8CC1", "#E67192", "#00B349", "#00C654", "#A3585A"]
     return colors[Math.floor(Math.random()*colors.length)]
   }
-
-  const getRich = formatted
-  .filter(el => el.id === Number(match.params.id))
-  .map(el => documentToReactComponents(el.info))[0]
 
   const vid = formatted
     .filter(el => el.id === Number(match.params.id)) // filter slugs instead
@@ -31,9 +27,9 @@ export default function Main({ formatted, level, topics, match, setData }) {
 
   return (
     <>
-   {!match.params.id && <Jumbotron/>}
-   {/* CONDITIONAL RENDERING for main / detail page */}
-    {match.params.id ? <Detail vid={vid} getRich={getRich}/> :  <div className="container">
+    {!match.params.id && <Jumbotron/>}
+    {/* CONDITIONAL RENDERING for main / detail page */}
+    {match.params.id ? <Detail vid={vid} formatted={ formatted }/> :  <div className="container">
       <select className="custom-select custom-select-lg mb-3" onChange={(e) => handleChange(e)}>
         <option selected>Select spiceyness of your project</option>
         <option value="easy">🌶 (easy)</option>
@@ -43,7 +39,7 @@ export default function Main({ formatted, level, topics, match, setData }) {
 
       <div className="row">
         <div className="col-sm-12">
-  {topics.map(el => <button className="btn" style={{backgroundColor: randomColor()}}>{el}</button>)}
+          {topics.map(el => <button className="btn" style={{backgroundColor: randomColor()}}>{el}</button>)}
         </div>
       </div>
 
@@ -54,8 +50,8 @@ export default function Main({ formatted, level, topics, match, setData }) {
               <div className="card">
                 <img
                   className="card-img-top"
-                  src={el.image}
-                  alt="Card image cap"
+                  src={el.image_url}
+                  alt="Card cap"
                 />
                 <div className="card-body">
                   <h5 className="card-title">{el.title}</h5>
@@ -77,7 +73,7 @@ export default function Main({ formatted, level, topics, match, setData }) {
               <div className="card">
                 <img
                   className="card-img-top"
-                  src={el.image}
+                  src={el.image_url}
                   alt="Card top"
                 />
                 <div className="card-body">
