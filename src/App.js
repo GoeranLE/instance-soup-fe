@@ -4,6 +4,7 @@ import NavBar from "./Components/NavBar";
 import Main from "./Components/Main";
 import Footer from "./Components/Footer";
 import NotFound from "./Components/NotFound";
+import AddSoup from "./Components/AddSoup";
 import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -76,6 +77,19 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
+{/*         <Route
+          path="/"
+          render={(props) => (
+            <Main
+              formatted={formatted}
+              level={data.levelSelected}
+              topic={data.topicSelected}
+              topics={topics}
+              setData={setData}
+              {...props}
+            />
+          )}
+        /> */}
         <Route
           path="/projects/:id?"
           render={(props) => (
@@ -89,6 +103,7 @@ function App() {
             />
           )}
         />
+        <Route path="/add-soup" component={AddSoup} />
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>

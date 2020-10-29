@@ -1,7 +1,8 @@
 import React from "react";
 import Detail from "./Detail.js";
 import Jumbotron from "./Jumbotron";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+
 
 
 export default function Main({ formatted, level, topic, topics, match, setData }) {
@@ -26,12 +27,17 @@ export default function Main({ formatted, level, topic, topics, match, setData }
     }
 
     const handleTopicSelection = (selectTopic) => {
+      console.log(selectTopic)
       setData(prevState => ({
         ...prevState,
-        topicSecelcted: selectTopic
+        topicSelected: selectTopic
       }))
-      console.log("You selected topic:", )
+      console.log("You selected topic:", topic )
   
+    }
+
+    for(let el of formatted) {
+      console.log(el.image_url);
     }
 
   return (
@@ -54,10 +60,10 @@ export default function Main({ formatted, level, topic, topics, match, setData }
 
   {/* nested conditional rendering spicyness: */}
   <div class="row mb-3 mt-3">{formatted.filter(el => {
-    if (level) {
+    if (level || topic ) {
       return el.level === level;
     } else if (topic) {
-      return el.topic === topic;
+      return topic.includes(el.topic);
     } else {
       return el
     }
@@ -67,7 +73,7 @@ export default function Main({ formatted, level, topic, topics, match, setData }
           <div className="card">
             <img
               className="card-img-top"
-              src={el.image_url}
+              src={`http://localhost:3003/${el.image_url}`}
               alt="Card cap"
             />
             <div className="card-body">

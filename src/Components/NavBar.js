@@ -40,6 +40,9 @@ export default function NavBar() {
             <li className="nav-item">
               <button type="button" className="btn btn-warning" onClick={() => history.push(`/projects/${Math.floor(Math.random()*8) + 1}`)}>random ramen</button>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link mr-3 home" to="/add-soup"><button type="button" className="btn btn-warnin">add soup</button></Link>
+            </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Enter your Email" aria-label="Search" />
