@@ -26,11 +26,12 @@ export default function Main({ formatted, level, topic, topics, match, setData }
     }
 
     const handleTopicSelection = (selectTopic) => {
+      console.log(selectTopic)
       setData(prevState => ({
         ...prevState,
-        topicSecelcted: selectTopic
+        topicSelected: selectTopic
       }))
-      console.log("You selected topic:", )
+      console.log("You selected topic:", topic )
   
     }
 
