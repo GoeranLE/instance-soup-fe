@@ -13,8 +13,6 @@ function App() {
     levelSelected: "",
   });
 
-  const [newState, setNewState] = useState([]);
-
   console.log("ALL", data.infos);
 
   const formatted = data.infos.map((el) => {
@@ -41,19 +39,17 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3003")
       .then((res) => res.json())
-      .then((data) => console.log(data));
-    // .then((res) => res.json())
-    // .then((data) => console.log(data))
-    // .then((data) =>
-    //   setData((prevState) => ({
-    //     ...prevState,
-    //     infos: [...data],
-    //   }))
-    // )
-    // .catch((error) => console.log(error.message));
+      // .then((data) => console.log(data));
+
+      .then((data) =>
+        setData((prevState) => ({
+          ...prevState,
+          infos: [...data],
+        }))
+      )
+      .catch((error) => console.log(error.message));
   }, []);
 
-  console.log("STATE", data);
 
   return (
     <div className="App">
