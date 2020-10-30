@@ -34,11 +34,16 @@ export default function NavBar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link mr-3 home" to="/projects">
-                Home <span className="sr-only">(current)</span>
+                Home 
               </Link>
             </li>
             <li className="nav-item">
-              <button type="button" className="btn btn-warning" onClick={() => history.push(`/projects/${Math.floor(Math.random()*8) + 1}`)}>random ramen</button>
+              <button type="button" className="btn btn-warning mr-3" onClick={() => history.push(`/projects/${Math.floor(Math.random()*8) + 1}`)}>random ramen</button>
+            </li>
+            <li className="nav-item active">
+              <Link className="btn btn-warning my-2 my-sm-0orm-inline my-2 my-lg-0" to="/add-soup">
+              add soup
+              </Link>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
