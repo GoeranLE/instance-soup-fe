@@ -1,34 +1,54 @@
-import React from 'react'
-import { useParams } from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
 
 const AddSoup = () => {
   return (
-  <div className="container">
-    <form method="POST" action="/add-new-soup">
-    <div class="form-group mt-5">
-      <label for="eaddSoupTitle">Title</label>
-      <input type="text" class="form-control" id="addSoupTitle" aria-describedby="title" placeholder="Enter your soup name" />
+    <div className="container">
+      <form method="POST" action="http://localhost:3003/add-new-soup">
+        <div class="form-group mt-5">
+          <label for="eaddSoupTitle">Title</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            id="addSoupTitle"
+            aria-describedby="title"
+            placeholder="Enter your soup name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="addSoupAuthor">Author</label>
+          <input
+            type="text"
+            class="form-control"
+            id="addSoupAuthor"
+            placeholder="Your name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="addSoupAbstract">Abstract</label>
+          <input
+            type="text"
+            class="form-control"
+            id="addSoupAbstract"
+            placeholder="Abstract"
+          />
+        </div>
+        <div class="form-group">
+          <label for="addSoupDescription">Description</label>
+          <textarea class="form-control" id="addSoupDescription" rows="3">
+            Description
+          </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="addSoupAuthor">Author</label>
-      <input type="text" class="form-control" id="addSoupAuthor" placeholder="Your name" />
-    </div>
-    <div class="form-group">
-      <label for="addSoupAbstract">Abstract</label>
-      <input type="text" class="form-control" id="addSoupAbstract" placeholder="Abstract" />
-    </div>
-    <div class="form-group">
-      <label for="addSoupDescription">Description</label>
-      <textarea class="form-control" id="addSoupDescription" rows="3">Description</textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-  )
-}
+  );
+};
 
-
-export default AddSoup
+export default AddSoup;
 
 /*     1:
     abstract: "Always hungry? Create a delicious recipe collection app with us!"

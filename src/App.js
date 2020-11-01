@@ -18,30 +18,6 @@ function App() {
   console.log("ALL", data.infos);
 
   const formatted = data.infos.map((el) => {
-    /*     return {
-      id: el.fields.id,
-      author: el.fields.author,
-      title: el.fields.title,
-      abstract: el.fields.abstract,
-      date: el.fields.creationDate,
-      level: el.fields.level,
-      image: el.fields.image.fields.file.url,
-      video: el.fields.video,
-      info: el.fields.info,
-    }; */
-
-    /*     1:
-    abstract: "Always hungry? Create a delicious recipe collection app with us!"
-    author: "Goeran L."
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
-    id: 2
-    level: "easy"
-    technologies: (4) ["Javascript", "HTML", "CSS", "Bootstrap"]
-    title: "Cook Book"
-    topics: (2) ["cooking", "programming basics"]
-    video: "https://www.youtube.com/embed/wVvhqJBcmcg"
-    __proto__: Object */
-
     return el;
   });
 
@@ -71,19 +47,6 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
-        {/*         <Route
-          path="/"
-          render={(props) => (
-            <Main
-              formatted={formatted}
-              level={data.levelSelected}
-              topic={data.topicSelected}
-              topics={topics}
-              setData={setData}
-              {...props}
-            />
-          )}
-        /> */}
         <Route
           path="/projects/:id?"
           render={(props) => (
@@ -98,6 +61,19 @@ function App() {
           )}
         />
         <Route path="/add-soup" component={AddSoup} />
+        <Route
+          path="/"
+          render={(props) => (
+            <Main
+              formatted={formatted}
+              level={data.levelSelected}
+              topic={data.topicSelected}
+              topics={topics}
+              setData={setData}
+              {...props}
+            />
+          )}
+        />
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
